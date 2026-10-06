@@ -18,3 +18,13 @@ WRDS credentials are read from `~/.pgpass` and are never stored in this repo.
 - `src/` - download and cleaning scripts
 - `data/raw/`, `data/processed/` - local data snapshots (not tracked)
 - `plan/` - project plan and sanity checks
+
+## Getting the data
+
+```
+python src/download_yfinance.py   # SPY, QQQ, IWM daily OHLCV, dividends, splits
+python src/download_macro.py      # VIX (CBOE + FRED) and 3-month T-bill (FRED)
+WRDS_USER=<username> python src/download_wrds.py   # CRSP daily (needs ~/.pgpass)
+```
+
+Everything is written to `data/raw/` as parquet.
